@@ -39,9 +39,10 @@ requires:
 build_scripts:
   - mkdir -p ~/.ssh/
   - mv decrypt.txt ~/.ssh/id_rsa
-  - ssh-keygen -F github.com > ~/.ssh/known_hosts
   - chmod 700 ~/.ssh
   - chmod 600 ~/.ssh/id_rsa
+  - ssh-keyscan github.com
+  - ssh-keygen -F github.com > ~/.ssh/known_hosts
 
   - bzr branch lp:lightdm-gtk-greeter
   - cd lightdm-gtk-greeter
