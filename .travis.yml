@@ -6,7 +6,7 @@ language: bash
 addons:
   apt:
     update: true
-    packages: bzr-fastexport
+    packages: bzr-fastimport
 
 script:
   - bzr branch lp:lightdm-gtk-greeter
