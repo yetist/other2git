@@ -1,0 +1,16 @@
+# vim: set ts=2 sts=2 sw=2 expandtab :
+sudo: required
+language: bash
+
+install:
+  - apt-get install bzr-fastexport
+
+script:
+  - bzr branch lp:lightdm-gtk-greeter
+  - cd lightdm-gtk-greeter
+  - git init
+  - bzr fast-export --plain . | git fast-import
+  - git reset --hard HEAD
+  - git remote add origin git@github.com:srcmirror/lightdm-gtk-greeter.git
+  - git push origin --all
+  - git push origin --tags
