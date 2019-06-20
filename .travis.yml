@@ -5,9 +5,6 @@ language: bash
 services:
   - docker
 
-addons:
-  ssh_known_hosts: github.com
-
 before_install:
   - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
   - curl -Ls -o gen-index https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/gen-index.sh
@@ -40,9 +37,11 @@ requires:
 
 build_scripts:
   - mkdir -p ~/.ssh/
-  - chmod 700 ~/.ssh
   - mv decrypt.txt ~/.ssh/id_rsa
+  - ssh-keygen -F github.com > ~/.ssh/known_hosts
+  - chmod 700 ~/.ssh
   - chmod 600 ~/.ssh/id_rsa
+
   - bzr branch lp:lightdm-gtk-greeter
   - cd lightdm-gtk-greeter
   - git init
