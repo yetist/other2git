@@ -5,6 +5,9 @@ language: bash
 services:
   - docker
 
+addons:
+  ssh_known_hosts: github.com
+
 before_install:
   - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
   - curl -Ls -o gen-index https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/gen-index.sh
