@@ -2,8 +2,10 @@
 sudo: required
 language: bash
 
-install:
-  - apt-get install bzr-fastexport
+addons:
+  apt:
+    update: true
+    packages: bzr-fastexport
 
 script:
   - bzr branch lp:lightdm-gtk-greeter
