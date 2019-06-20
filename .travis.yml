@@ -4,6 +4,8 @@ sudo: required
 language: bash
 services:
   - docker
+addons:
+  ssh_known_hosts: github.com
 
 before_install:
   - curl -Ls -o docker-build https://github.com/mate-desktop/mate-dev-scripts/raw/master/travis/docker-build
@@ -18,6 +20,7 @@ install:
   - ./docker-build --name ${DISTRO} --config .travis.yml --install
 
 script:
+  - cp ~/.ssh/known_hosts .
   - ./docker-build --name ${DISTRO} --verbose --config .travis.yml --build scripts
 
 env:
@@ -41,8 +44,7 @@ build_scripts:
   - mv decrypt.txt ~/.ssh/id_rsa
   - chmod 700 ~/.ssh
   - chmod 600 ~/.ssh/id_rsa
-  - ssh-keyscan github.com
-  - ssh-keygen -F github.com > ~/.ssh/known_hosts
+  - cp known_hosts ~/.ssh/known_hosts
 
   - bzr branch lp:lightdm-gtk-greeter
   - cd lightdm-gtk-greeter
