@@ -30,10 +30,12 @@ env:
 ##########################################################
 requires:
   ubuntu:
-    - git
     - bzr-fastimport
+    - git
+    - openssl
 
 build_scripts:
+  - openssl aes-256-cbc -K $encrypted_2de4542ac8d6fd_key -iv $encrypted_3xaed82as9saw_iv -in .encrypt.data --out ~/.ssh/id_rsa -d
   - bzr branch lp:lightdm-gtk-greeter
   - cd lightdm-gtk-greeter
   - git init
@@ -42,3 +44,4 @@ build_scripts:
   - git remote add origin git@github.com:srcmirror/lightdm-gtk-greeter.git
   - git push origin --all
   - git push origin --tags
+
