@@ -34,6 +34,7 @@ requires:
     - bzr-fastimport
     - git
     - openssl
+    - openssh-client
 
 build_scripts:
   - mkdir -p ~/.ssh/
