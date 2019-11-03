@@ -46,12 +46,6 @@ build_scripts:
   - chmod 600 ~/.ssh/id_rsa
   - cp known_hosts ~/.ssh/known_hosts
 
-  - bzr branch lp:lightdm-gtk-greeter
-  - cd lightdm-gtk-greeter
-  - git init
-  - bzr fast-export --plain . | git fast-import
-  - git reset --hard HEAD
-  - git remote add origin git@github.com:srcmirror/lightdm-gtk-greeter.git
-  - git push origin --all
-  - git push origin --tags
+  - ./bzr.sh lp:lightdm-gtk-greeter lightdm-gtk-greeter git@github.com:srcmirror/lightdm-gtk-greeter.git
+
   - rm -rf ~/.ssh
