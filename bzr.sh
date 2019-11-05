@@ -1,7 +1,8 @@
 #!/bin/bash
-if [ $# -eq 3 ];then
+if [ $# -ne 3 ];then
     echo "Usage:"
-    echo "\t<bzr_repo> <work_dir> <git_repo>"
+    echo -e "\t<bzr_repo> <work_dir> <git_repo>"
+    exit 0
 fi
 
 BZR_SRC=$1
